@@ -17,7 +17,7 @@
 //   )
 // );
 
-// postRouter.post("/", validateToken, postsController.createPost);
+// postRouter.post("/", validateToken, postsController.createPost)
 // postRouter.post("/:id", validateToken, postsController.createComment);
 
 
