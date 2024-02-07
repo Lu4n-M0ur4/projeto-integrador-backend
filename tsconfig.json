@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "types": ["node", "express"], // Certifique-se de incluir 'express' aqui
+    "typeRoots": ["./src", "./node_modules/@types"], // Adicione o caminho para seu diretório 'src'
+    // ... outras configurações ...
+  },
+  "include": ["src/**/*.ts"], // Certifique-se de incluir seus arquivos TypeScript
+  "exclude": ["node_modules"]
+}
