@@ -20,7 +20,7 @@ export default class UserBusiness {
 //signup
   public signup = async (input: SignupInputDTO): Promise<SignupOutputDTO> => {
     const userDB: UserDB | undefined = await this.userDatabase.findUserByEmail(input.email);
-    try {
+    
     if (userDB) {
       throw new BadRequestError("E-mail já cadastrado.");
     }
@@ -57,12 +57,9 @@ export default class UserBusiness {
 
     return output;
 
-} catch (error) {
-    console.error("Erro durante o signup:", error);
-    throw error; 
-}
-  };
+  }
 
+  
 //login
 public login = async (input: LoginInputDTO): Promise<LoginOutputDTO> => {
 

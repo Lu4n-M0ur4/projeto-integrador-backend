@@ -1,7 +1,7 @@
-import { knex, Knex } from "knex";
+import knex from "knex";
 
 export abstract class BaseDatabase {
-  protected static connection: Knex = knex({
+  protected static connection = knex({
     client: "sqlite3",
     connection: {
       filename: process.env.DB_FILE_PATH as string,
@@ -15,9 +15,4 @@ export abstract class BaseDatabase {
       },
     },
   });
-
-  protected getConnection(): Knex {
-    return BaseDatabase.connection;
-  }
 }
-

@@ -1,8 +1,8 @@
 import express from 'express';
 import UserController from '../controller/UserController';
-import GetAllController from '../controller/GetAllController';
+
 import UserBusiness from '../business/UserBusiness';
-import GetAllBusiness from '../business/GetAllBusiness';
+
 import UserDatabase from '../database/UserDatabase';
 import GetAllDatabase from '../database/getAllDatabase';
 import { IdGenerator } from '../services/IdGenerator';
@@ -15,23 +15,14 @@ const idGenerator = new IdGenerator();
 const hashManager = new HashManager();
 const tokenManager = new TokenManager();
 
-const userBusiness = new UserBusiness(userDatabase, idGenerator, hashManager, tokenManager);
-const getAllBusiness = new GetAllBusiness(getAllDatabase);
 
-const userController = new UserController(userBusiness);
-const getAllController = new GetAllController(getAllBusiness);
+
+
+const userController = new UserController(new UserBusiness(new UserDatabase(),new IdGenerator(),new HashManager(),new TokenManager()));
+
 
 const userRouter = express.Router();
 
-userRouter.get('/', (req, res) => {
-  res.send('Rota de Usuários');
-});
-
-userRouter.get('/ping', (req, res) => {
-  res.send('pong!');
-});
-
-userRouter.get('/all', getAllController.getAllUsers);
 
 userRouter.post('/signup', userController.signup);
 
